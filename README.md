@@ -33,3 +33,7 @@ be aware of the skip_files directives in your app.yaml.
 Mac OS X. See the comment at the bottom of
 google/appengine/tools/devappserver2/file_watcher.py for information about
 its limitations and why it was originally removed from the SDK.
+
+**fix-getaddrinfo-proto.patch:** Fixes an issue where the SDK's WSGI server can
+sometimes fail with the error "Unable to find a consistent port localhost" when
+starting up.
