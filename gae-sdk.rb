@@ -8,7 +8,8 @@ class GaeSdk < Formula
   def patches
     [
       "https://raw.github.com/dylanvee/homebrew-gae_sdk/master/task-queue-hostnames.patch",
-      "https://raw.github.com/dylanvee/homebrew-gae_sdk/master/watcher-skip-files.patch"
+      "https://raw.github.com/dylanvee/homebrew-gae_sdk/master/watcher-skip-files.patch",
+      "https://raw.github.com/dylanvee/homebrew-gae_sdk/master/fsevents-file-watcher.patch"
     ]
   end
 
