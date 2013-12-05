@@ -37,3 +37,7 @@ its limitations and why it was originally removed from the SDK.
 **fix-getaddrinfo-proto.patch:** Fixes an issue where the SDK's WSGI server can
 sometimes fail with the error "Unable to find a consistent port localhost" when
 starting up.
+
+**fsevents-ignore.patch:** Makes the aforementioned FSEvents-based file watcher
+ignore the directories (e.g. ".git") and file extensions (e.g. ".pyc") listed
+in `google.appengine.tools.devappserver2.watcher_common`.

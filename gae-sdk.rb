@@ -10,7 +10,8 @@ class GaeSdk < Formula
       "https://raw.github.com/dylanvee/homebrew-gae_sdk/master/task-queue-hostnames.patch",
       "https://raw.github.com/dylanvee/homebrew-gae_sdk/master/watcher-skip-files.patch",
       "https://raw.github.com/dylanvee/homebrew-gae_sdk/master/fsevents-file-watcher.patch",
-      "https://raw.github.com/dylanvee/homebrew-gae_sdk/master/fix-getaddrinfo-proto.patch"
+      "https://raw.github.com/dylanvee/homebrew-gae_sdk/master/fix-getaddrinfo-proto.patch",
+      "https://raw.github.com/dylanvee/homebrew-gae_sdk/master/fsevents-ignore.patch"
     ]
   end
 

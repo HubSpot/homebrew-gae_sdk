@@ -1,0 +1,76 @@
+diff --git i/google/appengine/tools/devappserver2/fsevents_file_watcher.py w/google/appengine/tools/devappserver2/fsevents_file_watcher.py
+index 65c2798..84b654a 100644
+--- i/google/appengine/tools/devappserver2/fsevents_file_watcher.py
++++ w/google/appengine/tools/devappserver2/fsevents_file_watcher.py
+@@ -20,6 +20,8 @@
+ import os.path
+ import threading
+ 
++from google.appengine.tools.devappserver2 import watcher_common
++
+ try:
+   import AppKit
+   import FSEvents
+@@ -29,7 +31,10 @@ except ImportError:
+ 
+ 
+ class FSEventsFileWatcher(object):
+-  """Monitors a directory tree for changes using FSEVents."""
++  """Monitors a directory tree for changes using FSEVents.
++
++  https://developer.apple.com/library/mac/documentation/Darwin/Reference/FSEvents_Ref/Reference/reference.html
++  """
+ 
+   def __init__(self, directory):
+     """Initializer for FSEventsFileWatcher.
+@@ -48,8 +53,38 @@ class FSEventsFileWatcher(object):
+   def is_available():
+     return FSEvents is not None
+ 
+-  def _fsevents_callback(self, *unused_args):
+-    self._has_changes = True
++  def _fsevents_callback(self, stream_ref, client_call_back_info, num_events,
++    event_paths, event_flags, event_ids):
++
++    # There are other flags, but these ones specifically indicate that a single
++    # file has changed in some way.
++    change_flags = (
++      FSEvents.kFSEventStreamEventFlagItemCreated |
++      FSEvents.kFSEventStreamEventFlagItemRemoved |
++      FSEvents.kFSEventStreamEventFlagItemInodeMetaMod |
++      FSEvents.kFSEventStreamEventFlagItemRenamed |
++      FSEvents.kFSEventStreamEventFlagItemModified |
++      FSEvents.kFSEventStreamEventFlagItemFinderInfoMod |
++      FSEvents.kFSEventStreamEventFlagItemChangeOwner |
++      FSEvents.kFSEventStreamEventFlagItemXattrMod)
++
++    for path, flag in zip(event_paths, event_flags):
++
++      # Ignore the event if it doesn't match any of the aforementioned flags.
++      if not flag & change_flags:
++        continue
++
++      # Ignore the path if it is an ignored directory.
++      if any(d in path for d in watcher_common._IGNORED_DIRS):
++        continue
++
++      # Ignore the path if it has an ignored file extension.
++      if watcher_common.ignore_file(os.path.split(path)[1]):
++        continue
++
++      # We found a changed file that we want to trigger a reload.
++      self._has_changes = True
++      return
+ 
+   def _watch_changes(self):
+     # Do the file watching in a thread to ensure that
+@@ -65,7 +100,8 @@ class FSEventsFileWatcher(object):
+         [self._directory],
+         FSEvents.kFSEventStreamEventIdSinceNow,
+         1,  # Seconds to wait to between received events.
+-        FSEvents.kFSEventStreamCreateFlagNone,
++        # We're interested in per-file (not per-directory) events.
++        FSEvents.kFSEventStreamCreateFlagFileEvents,
+         )
+ 
+     FSEvents.FSEventStreamScheduleWithRunLoop(event_stream,
