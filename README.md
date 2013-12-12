@@ -21,6 +21,7 @@ need to unlink it: `brew unlink google-app-engine`
 
 **Installation:**
 
+    pip install pyobjc-framework-FSEvents  # KA folks: `make deps` will do this
     brew tap dylanvee/gae_sdk
     brew install gae-sdk
 
