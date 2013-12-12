@@ -41,3 +41,6 @@ starting up.
 **fsevents-ignore.patch:** Makes the aforementioned FSEvents-based file watcher
 ignore the directories (e.g. ".git") and file extensions (e.g. ".pyc") listed
 in `google.appengine.tools.devappserver2.watcher_common`.
+
+**ignore-genfiles.patch:** Adds "genfiles" (a Khan Academy-specific build
+artifact directory) to the aforementioned list of ignored directories.
