@@ -10,11 +10,11 @@ time so you may want to `brew remove` it anyway.
 Issues and pull requests gladly accepted, and feel free to steal these patches
 for use in a non-Homebrew setup.
 
-Note: If you have ever used GoogleAppEngineLauncher.app, you might have
-symlinks to it in /usr/local/bin that need to be deleted before Homebrew will
-link this formula correctly.
-
 # Installation
+
+**Important:** If you have ever used GoogleAppEngineLauncher.app, you might
+have *.py symlinks to it in /usr/local/bin that must be deleted before Homebrew
+will link this formula correctly.
 
     brew unlink google-app-engine
     brew tap dylanvee/gae_sdk
