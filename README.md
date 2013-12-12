@@ -13,7 +13,8 @@ for use in a non-Homebrew setup.
 # Installation
 
 **Important:** If you have ever used GoogleAppEngineLauncher.app, you might
-have *.py symlinks to it in /usr/local/bin that must be deleted before Homebrew
+have *.py symlinks to it in /usr/local/bin that
+[must be deleted](http://stackoverflow.com/a/14081488/431079) before Homebrew
 will link this formula correctly.
 
 **Important:** If you have previously installed the SDK via Homebrew, you'll
