@@ -16,7 +16,11 @@ for use in a non-Homebrew setup.
 have *.py symlinks to it in /usr/local/bin that must be deleted before Homebrew
 will link this formula correctly.
 
-    brew unlink google-app-engine
+**Important:** If you have previously installed the SDK via Homebrew, you'll
+need to unlink it: `brew unlink google-app-engine`
+
+**Installation:**
+
     brew tap dylanvee/gae_sdk
     brew install gae-sdk
 
