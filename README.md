@@ -1,3 +1,5 @@
+# DEPRECATED: see [frankenserver](https://github.com/Khan/frankenserver) instead
+
 # Introduction
 
 This repository contains a Homebrew formula for installing the Google App
