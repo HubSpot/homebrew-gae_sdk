@@ -2,17 +2,12 @@ require 'formula'
 
 class GaeSdk < Formula
   homepage 'https://developers.google.com/appengine/'
-  url 'http://googleappengine.googlecode.com/files/google_appengine_1.8.8.zip'
-  sha1 '06ec39f53a37e1bbe8cade947a5a45af6eeadaea'
+  url 'https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.17.zip'
+  sha1 'eec50aaf922d3b21623fda1b90e199c3ffa9e16e'
 
   def patches
     [
-      "https://raw.github.com/dylanvee/homebrew-gae_sdk/master/task-queue-hostnames.patch",
-      "https://raw.github.com/dylanvee/homebrew-gae_sdk/master/watcher-skip-files.patch",
-      "https://raw.github.com/dylanvee/homebrew-gae_sdk/master/fsevents-file-watcher.patch",
-      "https://raw.github.com/dylanvee/homebrew-gae_sdk/master/fix-getaddrinfo-proto.patch",
-      "https://raw.github.com/dylanvee/homebrew-gae_sdk/master/fsevents-ignore.patch",
-      "https://raw.github.com/dylanvee/homebrew-gae_sdk/master/ignore-genfiles.patch"
+      "https://raw.githubusercontent.com/HubSpot/homebrew-gae_sdk/master/task-queue-hostnames.patch",
     ]
   end
 
