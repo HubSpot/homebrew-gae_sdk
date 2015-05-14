@@ -2,8 +2,8 @@ require 'formula'
 
 class GaeSdk < Formula
   homepage 'https://developers.google.com/appengine/'
-  url 'https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.18.zip'
-  sha1 '823b6402241b354450ba20ae86ea578197995b4c'
+  url 'https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.19.zip'
+  sha1 '2a0b7c286858a0f97e56192f6c9c0e4793961f4a'
 
   def patches
     [
