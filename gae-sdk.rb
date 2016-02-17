@@ -34,5 +34,6 @@ class GaeSdk < Formula
     ].each do |fn|
       bin.install_symlink share/name/fn
     end
+    mkdir "google_appengine"
   end
 end
