@@ -12,14 +12,14 @@ class GaeSdk < Formula
   end
 
   def install
-    cd '..'
-    share.install 'google_appengine' => name
-    bin.mkpath
+    cd ".."
+    share.install "google_appengine" => name
     %w[
       _python_runtime.py
       _php_runtime.py
       api_server.py
       appcfg.py
+      backends_conversion.py
       bulkload_client.py
       bulkloader.py
       dev_appserver.py
@@ -27,10 +27,12 @@ class GaeSdk < Formula
       endpointscfg.py
       gen_protorpc.py
       google_sql.py
-      old_dev_appserver.py
+      php_cli.py
       remote_api_shell.py
+      run_tests.py
+      wrapper_util.py
     ].each do |fn|
-      ln_s share+name+fn, bin
+      bin.install_symlink share/name/fn
     end
   end
 end
